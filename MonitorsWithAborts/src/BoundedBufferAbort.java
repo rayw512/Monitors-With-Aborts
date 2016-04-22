@@ -10,7 +10,7 @@ class BoundedBufferAbort extends MonitorsWithAborts implements Serializable {
     int inBuf = 0, outBuf = 0, count = 0;
 
     public synchronized void deposit(Object value) throws InterruptedException, IOException, ClassNotFoundException{
-		savestate();
+		saveState();
         while (count == size) // buffer full
             wait();
         buffer[inBuf] = value;
@@ -30,7 +30,7 @@ class BoundedBufferAbort extends MonitorsWithAborts implements Serializable {
     }
 
     public synchronized Object fetch() throws InterruptedException, IOException, ClassNotFoundException{
-		savestate();
+		saveState();
         Object value;
         while (count == 0) // buffer empty
             wait();
