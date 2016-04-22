@@ -2,3 +2,5 @@
 *.class
 
 *.ser
+.metadata/
+.recommenders/
