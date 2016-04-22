@@ -13,10 +13,8 @@ class BankMonitor extends MonitorsWithAborts implements Serializable {
 		System.out.println("Balance saved: "+ balance);
 		balance=balance+amount;
 		System.out.println("Balance before abort: "+ balance );
-		BankMonitor saved=(BankMonitor)this.abort();
-		balance=saved.getBalance();
+		abort();
 		System.out.println("Balance after abort: "+ balance );
-		
 	}
 
 	public synchronized void withdraw(int amount) throws InterruptedException {
@@ -24,12 +22,20 @@ class BankMonitor extends MonitorsWithAborts implements Serializable {
 		balance=balance-amount;
 		
 	}
+
 	public synchronized int getBalance()
 	{
 		return balance;
 	}
+
 	public synchronized void setBalance(int newBalance)
 	{
 		balance=newBalance;
+	}
+
+	@Override
+	public void restore(Object object){
+		BankMonitor oldState = (BankMonitor)object;
+		this.balance = oldState.balance;
 	}
 }

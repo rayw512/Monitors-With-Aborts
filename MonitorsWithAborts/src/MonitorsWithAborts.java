@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class MonitorsWithAborts {
+public abstract class MonitorsWithAborts {
 	public void savestate() throws IOException
 	{
         FileOutputStream fileOut =
@@ -16,13 +16,15 @@ public class MonitorsWithAborts {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Object abort() throws IOException, ClassNotFoundException
+	public void abort() throws IOException, ClassNotFoundException
 	{
         FileInputStream fileIn = new FileInputStream("savedState.ser");
         ObjectInputStream in = new ObjectInputStream(fileIn);
         Object obj =in.readObject();
         in.close();
         fileIn.close();
-        return obj;
+		restore(obj);
 	}
+
+	public abstract void restore(Object object);
 }
