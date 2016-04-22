@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 public class DepositTest implements Runnable {
 	BankMonitor account;
@@ -10,8 +11,14 @@ public class DepositTest implements Runnable {
 		while (true) {
 			try {
 				account.deposit(1);
-				System.out.println("Bank Account Balance: "+account.getBalance());
+				//System.out.println("Bank Account Balance: "+account.getBalance());
 			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

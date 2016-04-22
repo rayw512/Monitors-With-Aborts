@@ -10,7 +10,7 @@ public class WithdrawTest implements Runnable {
 		while (true) {
 			try {
 				account.withdraw(1);
-				System.out.println("Bank Account Balance: "+account.getBalance());
+				//System.out.println("Bank Account Balance: "+account.getBalance());
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
