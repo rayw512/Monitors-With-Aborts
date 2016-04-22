@@ -1,12 +1,15 @@
 import java.io.*;
 
-public class MonitorsWithAborts {
+
+public abstract class MonitorsWithAborts {
 	public void savestate() throws IOException {
 		FileOutputStream fileOut = new FileOutputStream("savedState.ser");
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
 		out.writeObject(this);
 		out.close();
 		fileOut.close();
+
+
 	}
 
 	/**
@@ -16,6 +19,7 @@ public class MonitorsWithAborts {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
+
 	public Object abort() throws IOException, ClassNotFoundException {
 		FileInputStream fileIn = new FileInputStream("savedState.ser");
 		ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -24,4 +28,6 @@ public class MonitorsWithAborts {
 		fileIn.close();
 		return obj;
 	}
+
+	public abstract void restore(Object object);
 }

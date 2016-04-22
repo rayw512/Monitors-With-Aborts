@@ -10,6 +10,7 @@ class BankMonitor extends MonitorsWithAborts implements Serializable {
 
 	public synchronized void deposit(int amount) throws InterruptedException, IOException, ClassNotFoundException {
 		this.savestate();
+
 		System.out.println("Balance saved: " + balance);
 		balance = balance + amount;
 		System.out.println("Balance before abort: " + balance);
@@ -25,11 +26,24 @@ class BankMonitor extends MonitorsWithAborts implements Serializable {
 
 	}
 
-	public synchronized int getBalance() {
+
+
+
+
+	public synchronized int getBalance()
+	{
 		return balance;
 	}
 
-	public synchronized void setBalance(int newBalance) {
-		balance = newBalance;
+	public synchronized void setBalance(int newBalance)
+	{
+		balance=newBalance;
+
+	}
+
+	@Override
+	public void restore(Object object){
+		BankMonitor oldState = (BankMonitor)object;
+		this.balance = oldState.balance;
 	}
 }
