@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Random;
 
 public class DepositTest implements Runnable {
 	BankMonitor account;
@@ -8,10 +9,13 @@ public class DepositTest implements Runnable {
 	}
 
 	public void run() {
+		Random rand=new Random(42);
 		while (true) {
 			try {
-				account.deposit(1);
-				//System.out.println("Bank Account Balance: "+account.getBalance());
+				
+				account.deposit(rand.nextInt(10));
+				// System.out.println("Bank Account Balance:
+				// "+account.getBalance());
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

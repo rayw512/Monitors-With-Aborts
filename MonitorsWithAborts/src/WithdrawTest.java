@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.util.Random;
 
 public class WithdrawTest implements Runnable {
 	BankMonitor account;
@@ -7,11 +9,14 @@ public class WithdrawTest implements Runnable {
 	}
 
 	public void run() {
+		Random rand=new Random(24);
 		while (true) {
 			try {
-				account.withdraw(1);
-				//System.out.println("Bank Account Balance: "+account.getBalance());
-			} catch (InterruptedException e) {
+				
+				account.withdraw(rand.nextInt(10));
+				// System.out.println("Bank Account Balance:
+				// "+account.getBalance());
+			} catch (InterruptedException | ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
