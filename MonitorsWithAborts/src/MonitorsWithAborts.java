@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.InterruptedException;
 
 public abstract class MonitorsWithAborts {
 	public void saveState() throws IOException {
@@ -17,6 +18,11 @@ public abstract class MonitorsWithAborts {
 		restore(obj);
 		in.close();
 		fileIn.close();
+	}
+
+	public void abortWait() throws IOException, InterruptedException {
+		wait();
+		saveState();
 	}
 
 	public abstract void restore(Object object);
