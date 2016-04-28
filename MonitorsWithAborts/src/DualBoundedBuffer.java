@@ -28,10 +28,10 @@ class DualBoundedBuffer extends MonitorsWithAborts implements Serializable {
 		Object obj = fromBuf.fetch();
 		if (obj != null){
 			if (!toBuf.deposit(obj)){
-				System.out.println("aborting..");
-				System.out.println("before abort");
+				System.out.println("aborting... restoring first buffer");
+				System.out.println("before abort: " + fromBuf);
 				abort();
-				System.out.println("after abort");
+				System.out.println("after abort: " + fromBuf);
 			}
 		}
 	}

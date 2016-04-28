@@ -27,5 +27,25 @@ class BoundedBuffer implements Serializable {
         count--;
 		return value;
     }
+	
+	@Override
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("count: " + count + " items: ");
+		for (int  i = outBuf; i < count + outBuf; i++){
+			if (i == outBuf){
+				// first item
+				sb.append("{");
+			}
+			sb.append(buffer[i % size]);
+			if (i == count + outBuf - 1){
+				// last item
+				sb.append("}");
+			} else {
+				sb.append(", ");
+			}
+		}
+		return sb.toString();
+	}
 
 }
