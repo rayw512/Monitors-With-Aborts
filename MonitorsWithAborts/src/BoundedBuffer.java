@@ -3,6 +3,11 @@ import java.io.IOException;
 import java.util.Random;
 import java.lang.StringBuilder;
 
+/*
+ * this class was adapted from Professor Garg's BoundedBufferMonitor example found at
+ * https://github.com/vijaygarg1/EE-360P/blob/master/chapter3-synchronization_primitives/BoundedBufferMonitor.java
+ */
+
 class BoundedBuffer implements Serializable {
 
     final int size = 10;

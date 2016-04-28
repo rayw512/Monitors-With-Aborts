@@ -2,6 +2,11 @@ import java.util.Random;
 import java.io.IOException;
 import java.lang.InterruptedException;
 
+/*
+ * this class was adapted from Professor Garg's ProducerConsumer example found at
+ * https://github.com/vijaygarg1/EE-360P/blob/master/chapter3-synchronization_primitives/ProducerConsumer.java
+ */
+
 class Producer implements Runnable {
     BoundedBufferAbortNotSerialize b = null;
     public Producer(BoundedBufferAbortNotSerialize initb) {
